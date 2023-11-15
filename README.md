@@ -1,6 +1,6 @@
 # Servlet Framework 미니 프로젝트
 
-- 기간 : 2023.11.14 ~ 
+- 기간 : 2023.11.14 ~ 2023.11.15
 - 설명 : Servlet Project 를 개발할 수 있는 Framework 구현
 
 ## 디렉토리 설명
