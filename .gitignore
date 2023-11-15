@@ -53,3 +53,6 @@ src/main/webapp/jstl/
 src/main/webapp/parameter/
 src/main/webapp/parameter(action)/
 src/main/webapp/WEB-INF/lib/
+
+### security ###
+src/main/resources/db.properties
