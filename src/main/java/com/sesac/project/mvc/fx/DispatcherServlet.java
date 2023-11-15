@@ -65,12 +65,16 @@ public class DispatcherServlet extends HttpServlet {
             }
 
             String viewName = mav.getViewName();
-            Map<String, Object> model = mav.getModel();
-            for (String key : model.keySet()) {
-                request.setAttribute(key, model.get(key));
+            if (viewName.startsWith("redirect:")) {
+                response.sendRedirect(viewName.substring(9));
+            } else {
+                Map<String, Object> model = mav.getModel();
+                for (String key : model.keySet()) {
+                    request.setAttribute(key, model.get(key));
+                }
+                RequestDispatcher dispatcher = request.getRequestDispatcher(viewName);
+                dispatcher.forward(request, response);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(viewName);
-            dispatcher.forward(request, response);
         } catch (IOException e) {
             log.info(e.getMessage());
         }
