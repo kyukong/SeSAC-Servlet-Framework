@@ -22,12 +22,14 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.28'
+    // servlet
     implementation 'javax.servlet:javax.servlet-api:3.0.1'
-    compileOnly 'commons-codec:commons-codec:1.16.0'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:${junitVersion}'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:${junitVersion}'
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    compileOnly 'commons-codec:commons-codec:1.16.0'
 }
 
 test {
