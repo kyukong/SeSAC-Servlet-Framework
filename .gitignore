@@ -42,3 +42,14 @@ bin/
 .DS_Store
 
 .idea
+
+### study code ###
+src/main/java/com/sesac/project/basic/
+src/main/java/com/sesac/project/beans/
+src/main/webapp/action/
+src/main/webapp/basic/
+src/main/webapp/include/
+src/main/webapp/jstl/
+src/main/webapp/parameter/
+src/main/webapp/parameter(action)/
+src/main/webapp/WEB-INF/lib/
