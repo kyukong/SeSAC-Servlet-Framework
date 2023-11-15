@@ -50,5 +50,29 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        String requestURI = request.getRequestURI();
+        String contextPath = request.getContextPath();
+        String action = requestURI.substring(contextPath.length());
+
+        try {
+            AbstractController controller = controllerMap.get(action);
+            if (controller == null) {
+                throw new RuntimeException("controller is null");
+            }
+            ModelAndView mav = controller.handleRequestInternal(request, response);
+            if (mav == null) {
+                throw new RuntimeException("model and view is null");
+            }
+
+            String viewName = mav.getViewName();
+            Map<String, Object> model = mav.getModel();
+            for (String key : model.keySet()) {
+                request.setAttribute(key, model.get(key));
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher(viewName);
+            dispatcher.forward(request, response);
+        } catch (IOException e) {
+            log.info(e.getMessage());
+        }
     }
 }
